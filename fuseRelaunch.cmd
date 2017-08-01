@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "C:/Users/Guy/Documents/ReTReO/ReTReO/PC_Mod_T_isim_beh.exe" -prj "C:/Users/Guy/Documents/ReTReO/ReTReO/PC_Mod_T_beh.prj" "work.PC_Mod_T" "work.glbl" 
