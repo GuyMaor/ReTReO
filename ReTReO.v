@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module ReTReO(In_Reg,Out_Reg,Override_Stall,clk);
-//module ReTReO(In_Reg,Out_Reg,Override_Stall,clk,TEST);//delete line	
+
 	parameter Data_Size = 16;
 	parameter Addr_Size = 6;
 	//In and Out reg ports
@@ -27,8 +27,6 @@ module ReTReO(In_Reg,Out_Reg,Override_Stall,clk);
 	//Reg Block Ports
 	wire [Data_Size-1:0] Reg_Block_Out;//Src
 	
-	//output TEST;//DELETE
-	//wire [15:0] TEST;//DELETE LINE
 	
 	
 	//Address parameters
@@ -58,7 +56,6 @@ module ReTReO(In_Reg,Out_Reg,Override_Stall,clk);
 	assign dest_val = Instr_Reg[6:0];
 	
 
-	//assign TEST = ALU_Out;//DELETE LINE
 	assign Write_En = Instr_Reg[6:0]==Write_En_Addr;
 	
 	PC_Mod pcmod(Branch_Loc_Reg,Override_Stall,dest_val,PC_Addr,clk,src[2:0],comp);

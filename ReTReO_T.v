@@ -31,7 +31,6 @@ module ReTReO_T;
 
 	// Outputs
 	wire [15:0] Out_Reg;
-	//wire [15:0] TEST;//DELETE
 
 	// Instantiate the Unit Under Test (UUT)
 	ReTReO uut (
@@ -39,12 +38,11 @@ module ReTReO_T;
 		.Out_Reg(Out_Reg), 
 		.Override_Stall(Override_Stall), 
 		.clk(clk)
-	//	.TEST(TEST)//DELETE
 	);
 
 	initial begin
 		// Initialize Inputs
-		In_Reg = 16'b0000000000000100;
+		In_Reg = 16'd4;
 		Override_Stall = 0; 
 
 
@@ -90,6 +88,12 @@ module ReTReO_T;
 		#100;
 		clk = 1;
 		#100;
+		Override_Stall = 1; 
+ 		clk = 0;
+		#100;
+		clk = 1;
+		#100;
+		Override_Stall = 0; 
  		clk = 0;
 		#100;
 		clk = 1;
@@ -99,7 +103,7 @@ module ReTReO_T;
 		clk = 1;
 		#100;
  		clk = 0;
-		#100;    		
+		#100;   		
 		// Add stimulus here
 
 	end

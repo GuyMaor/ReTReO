@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-08-02T03:55:17</DateModified>
+  <DateModified>2017-08-02T13:03:24</DateModified>
   <ModuleName>ReTReO</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>C:/Users/Guy/Documents/ReTReO/ReTReO/iseconfig/ReTReO.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/Guy/Documents/ReTReO/ReTReO</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>C:/Users/Guy/Documents/ReTReO/ReTReO\</ImplementationReportsDirectory>
   <DateInitialized>2017-08-02T03:55:16</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
