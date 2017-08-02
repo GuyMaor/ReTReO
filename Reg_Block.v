@@ -20,8 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Reg_Block(Data_In,Data_Out,Addr_In, Addr_Out,clk);
 
-	 parameter IN_ADDR_WIDTH = 9;
-	 parameter OUT_ADDR_WIDTH = 7;
+	 parameter IN_ADDR_WIDTH = 7;//Only changes
+	 parameter OUT_ADDR_WIDTH = 9;//Only Changes
 	 parameter ACTUAL_ADDR_WIDTH = 5;
 	 parameter DATA_WIDTH = 16 ;
 	 parameter REG_DEPTH = 1<<ACTUAL_ADDR_WIDTH;
