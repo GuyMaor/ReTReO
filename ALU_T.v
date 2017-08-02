@@ -44,7 +44,7 @@ module ALU_T;
 
 	initial begin
 		// Initialize Inputs
-		op = 3'b0001;//sub
+		op = 4'b0001;//sub
 		A = 16'b0000000000000101;//5
 		B = 16'b0000000000000010;//4
 		//expected_comp = 3'b100;
@@ -77,9 +77,9 @@ module ALU_T;
 		B = 16'b1111111111111010;//-6
 		//expected_comp = 3'b001;
 		#100;
-		op = 3'b0110;
+		op = 4'b0110;
 		#100;
-		op = 3'b0111;
+		op = 4'b0111;
 		A = 16'b0000000000100100;//36 
 		B = 16'b1111111111111010;//-6
 	end

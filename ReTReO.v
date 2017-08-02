@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 
 module ReTReO(In_Reg,Out_Reg,Override_Stall,clk);
+//module ReTReO(In_Reg,Out_Reg,Override_Stall,clk,TEST);//delete line	
 	parameter Data_Size = 16;
 	parameter Addr_Size = 6;
 	//In and Out reg ports
@@ -26,6 +27,10 @@ module ReTReO(In_Reg,Out_Reg,Override_Stall,clk);
 	//Reg Block Ports
 	wire [Data_Size-1:0] Reg_Block_Out;//Src
 	
+	//output TEST;//DELETE
+	//wire [15:0] TEST;//DELETE LINE
+	
+	
 	//Address parameters
 	parameter A_ALU_Addr = 7'b0100010;
 	parameter B_ALU_Addr = 7'b0100011;
@@ -42,29 +47,30 @@ module ReTReO(In_Reg,Out_Reg,Override_Stall,clk);
 
 	
 	//Stores data sent from the source. May possibly have problems.
-	reg [Data_Size-1:0] src;
+	reg [Data_Size-1:0] src; 
 	
 	//Instruction Register
 	reg [15:0] Instr_Reg;
 	wire [15:0] Instruction;
-	wire [15:7] src_val;
+	wire [8:0] src_val;
 	wire [6:0] dest_val;
 	assign src_val = Instr_Reg[15:7];
 	assign dest_val = Instr_Reg[6:0];
 	
-	
+
+	//assign TEST = ALU_Out;//DELETE LINE
 	assign Write_En = Instr_Reg[6:0]==Write_En_Addr;
 	
 	PC_Mod pcmod(Branch_Loc_Reg,Override_Stall,dest_val,PC_Addr,clk,src[2:0],comp);
-	ALU alumod(A_ALU_Reg,B_ALU_Reg,ALU_Out,Op_Alu_Reg,comp);
+	ALU alumod(A_ALU_Reg,B_ALU_Reg,ALU_Out,Op_ALU_Reg,comp);
 	Reg_Block regblockmod(src,Reg_Block_Out,dest_val,src_val,clk);
 	RAM rammod(clk,PC_Addr,RAM_Addr_Reg,Instruction,RAM_Out,RAM_Data_Reg,Write_En);
 	
 	always @ (src_val,In_Reg,ALU_Out,RAM_Out,Reg_Block_Out)
-	begin
-		if(src_val[8]==1)
+	begin 
+		if(src_val[8]==1'b1)
 			src = {8'b00000000,src_val[7:0]};
-		else if(src_val[8:6]==0)
+		else if(src_val[8:5]==0)
 			src = Reg_Block_Out;
 		else
 		begin
@@ -82,11 +88,14 @@ module ReTReO(In_Reg,Out_Reg,Override_Stall,clk);
 			A_ALU_Addr: A_ALU_Reg = src;
 			B_ALU_Addr: B_ALU_Reg = src;
 			Out_Reg_Addr: Out_Reg = src;
-			ALU_Op_Reg_Addr: Op_ALU_Reg = src;
-			Branch_Loc_Reg_Addr: Branch_Loc_Reg = src;
-			RAM_Addr_Reg_Addr: RAM_Addr_Reg = src;
+			ALU_Op_Reg_Addr: Op_ALU_Reg = src[3:0];
+			Branch_Loc_Reg_Addr: Branch_Loc_Reg = src[Addr_Size-1:0];
+			RAM_Addr_Reg_Addr: RAM_Addr_Reg = src[Addr_Size-1:0];
 			RAM_Data_Reg_Addr: RAM_Data_Reg = src;
 		endcase
 	end
 
+	always @ (posedge clk)
+		Instr_Reg = Instruction;
+		
 endmodule

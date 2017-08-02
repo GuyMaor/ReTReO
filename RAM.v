@@ -32,6 +32,25 @@ module RAM(clk, addr_a, addr_b, data_a, data_b, in_data,write_en);
 	 input write_en;
 	 reg [DATA_WIDTH-1:0] mem [RAM_DEPTH-1:0];
 
+	//Test ALU
+	initial
+	begin
+		mem[0] = 16'b0001001010100011; //in reg to reg A
+		mem[1] = 16'b1000001110100010; //4 to reg B
+		mem[2] = 16'b1000000010100111;
+		mem[3] = 16'b0001010000100110;
+		mem[4] = 16'b0000000000100001;
+	end 
+	/*
+	initial
+	begin
+		mem[0] = ;
+		mem[1] = ;
+		mem[2] = ;
+		men[3] = ;
+		mem[4] = ;
+	end */
+	
 	always @ (posedge clk) 
 	begin
 		if(write_en)

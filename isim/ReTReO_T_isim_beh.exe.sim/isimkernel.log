@@ -1,0 +1,29 @@
+Command line:
+   ReTReO_T_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  64039
+
+Wed Aug 02 05:34:33 2017
+
+
+ Elaboration Time: 0.03125 sec
+
+ Current Memory Usage: 845.701 Meg
+
+ Total Signals          : 51
+ Total Nets             : 225
+ Total Signal Drivers   : 31
+ Total Blocks           : 7
+ Total Primitive Blocks : 5
+ Total Processes        : 45
+ Total Traceable Variables  : 70
+ Total Scalar Nets and Variables : 2179
+Total Line Count : 153
+
+ Total Simulation Time: 0.203125 sec
+
+ Current Memory Usage: 688.415 Meg
+
+Wed Aug 02 05:36:12 2017
+

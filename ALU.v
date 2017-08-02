@@ -12,14 +12,14 @@ module ALU(A,B,out,op,comp);
 	reg [2:0] comp;
 	wire is_equal = A==B;
 	wire is_greater = ($signed(A) > $signed(B));
-	parameter ADD_OP = 3'b0000;
-	parameter SUB_OP = 3'b0001;
-	parameter AND_OP = 3'b0010;
-	parameter OR_OP = 3'b0011;
-	parameter NOT_OP = 3'b0100;
-	parameter XOR_OP = 3'b0101;
-	parameter MUL_OP = 3'b0110;
-	parameter DIV_OP = 3'b0111;
+	parameter ADD_OP = 4'b0000;
+	parameter SUB_OP = 4'b0001;
+	parameter AND_OP = 4'b0010;
+	parameter OR_OP = 4'b0011;
+	parameter NOT_OP = 4'b0100;
+	parameter XOR_OP = 4'b0101;
+	parameter MUL_OP = 4'b0110;
+	parameter DIV_OP = 4'b0111;
 	always @ (A or B or op)
 	case(op)
 		ADD_OP: out = A+B;
